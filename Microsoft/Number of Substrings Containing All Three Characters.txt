@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int numberOfSubstrings(string s) {
+        map<char,int> temp;
+        int left=0,right=s.size()-1,count=0,j=0;
+        while(left<=right){
+            temp[s[left]]++;
+            
+            while(temp.size()==3){
+                count +=1+(right-left);
+                temp[s[j]]--;
+                if(temp[s[j]]==0){
+                    temp.erase(s[j]);
+                    j++;
+                    break;
+                }
+                j++;
+            }
+            left++;
+        }
+        return count;
+    }
+};
