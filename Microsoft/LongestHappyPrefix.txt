@@ -1,0 +1,29 @@
+class Solution {
+public: 
+string longestPrefix(string s) 
+    {
+        
+       vector<int> temp(s.size(),0);
+
+       int i=1,j=0;
+       while(i<s.size())
+       {
+           if(s[i]==s[j])
+           {
+               j++;
+               temp[i]=j;
+               i++;
+           }
+           else
+           {
+               if(j!=0)
+               j=temp[j-1];
+               else
+               i++;
+           }
+       }
+
+       return s.substr(0,temp[s.size()-1]);
+       
+    }
+};
